@@ -1,0 +1,40 @@
+<div fxFlexFill fxLayoutAlign="center center" class="register-container">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Register page</mat-toolbar>
+        <form fxLayoutAlign="space-between center" [formGroup]="registerForm" fxLayout="column" class="register-form" fxLayoutGap="12px" (ngSubmit)="onSubmit()">
+            <span fxLayout="row" fxLayoutGap="12px">
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+                    <mat-error *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')">Email address is required.</mat-error>
+                    <mat-error *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('email')">You must enter a valid email address.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="name" autocomplete="off">
+                    <mat-error *ngIf="registerForm.controls['name'].touched && registerForm.controls['name'].hasError('required')">Name is required.</mat-error>
+                </mat-form-field>
+            </span>
+            <span fxLayout="row" fxLayoutGap="12px">
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off">
+                    <mat-error *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')">Password is required.</mat-error>
+                    <mat-error *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('minlength')">The password must be at least 8 characters long.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Repeat password" formControlName="repeatPassword" autocomplete="off">
+                    <mat-error *ngIf="registerForm.controls['repeatPassword'].touched && registerForm.controls['repeatPassword'].hasError('required')">Repeat password is required.</mat-error>
+                </mat-form-field>
+            </span>
+            <span fxLayout="row" fxLayoutGap="12px">
+                <mat-form-field>
+                    <input matInput placeholder="Role" formControlName="role" autocomplete="off">
+                    <mat-error *ngIf="registerForm.controls['role'].touched && registerForm.controls['role'].hasError('required')">Role is required.</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Location" formControlName="location" autocomplete="off">
+                    <mat-error *ngIf="registerForm.controls['location'].touched && registerForm.controls['location'].hasError('required')">Location is required.</mat-error>
+                </mat-form-field>
+            </span>
+            <button mat-flat-button color="primary" [disabled]="!registerForm.valid" type="submit">Register</button>
+        </form>
+    </mat-card>
+</div>

@@ -1,0 +1,16 @@
+
+    <mat-card-title>{{device.name}}</mat-card-title>
+    <mat-card-subtitle>{{device.type}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>{{device.manufacturer}}</p>
+      <p>{{device.processor}}, {{device.ramAmmount}} RAM</p>
+      <ul>
+          <li>{{device.os}} {{device.osVersion}}</li>
+          <li *ngIf="this.owner">Owned by: {{this.owner}}</li>
+          <li *ngIf="!this.owner">Owned by: Not owned</li>
+      </ul>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" [disabled]="this.owner || isDevice" (click)="onSubmit()">Assign</button>
+    </mat-card-actions>

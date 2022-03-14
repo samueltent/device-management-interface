@@ -1,0 +1,18 @@
+<div fxFlexFill fxLayoutAlign="center center" class="login-container">
+    <mat-card fxFlex="25">
+        <mat-toolbar color="primary">Login page</mat-toolbar>
+        <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" fxLayoutGap="12px">
+            <mat-form-field>
+                <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+                <mat-error *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].hasError('required')">Email address is required.</mat-error>
+                <mat-error *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].hasError('email')">You must enter a valid email address.</mat-error>
+            </mat-form-field>    
+            <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off">
+                <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].hasError('required')">Password is required.</mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].hasError('minlength')">The password must be at least 8 characters long.</mat-error>
+            </mat-form-field>
+            <button mat-flat-button color="primary" [disabled]="!loginForm.valid" type="submit">Login</button>
+          </form>          
+    </mat-card>
+</div>

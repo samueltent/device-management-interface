@@ -1,0 +1,10 @@
+<mat-toolbar fxLayout="row wrap" color="primary" fxLayoutAlign="space-between center" class="navbar-toolbar">
+    <span class="navbar-logo" [routerLink]="['/home']">Device Management Project</span>
+
+    <div>
+        <a mat-button [routerLink]="['/login']" *ngIf="!this.isLoggedIn()">Login</a>
+        <a mat-button [routerLink]="['/register']" *ngIf="!this.isLoggedIn()">Register</a>
+        <span class="navbar-user-text" *ngIf="this.isLoggedIn()">Hi, {{this.loggedInUser}}</span>
+        <span *ngIf="this.isLoggedIn()"><a mat-button (click)="this.logOut()">Logout</a></span>
+    </div>
+</mat-toolbar>

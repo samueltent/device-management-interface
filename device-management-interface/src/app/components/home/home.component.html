@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutAlign="space-around" fxLayoutGap="30px">
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+        <app-my-devices [device]="this.ownDevice" [isDevice]="this.isDevice"></app-my-devices>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around">
+        <button mat-flat-button color="primary" (click)="toggleAdd()">Add Device</button>
+    </div>
+    <div *ngIf="addDeviceFormVisible" fxFlexFill fxLayoutAlign="center center" class="register-container">
+        <mat-card fxFlex="25">
+            <form fxLayoutAlign="stretch" fxLayout="column" [formGroup]="addDeviceForm" class="register-form" fxLayoutGap="12px">
+                    <mat-form-field>
+                        <input matInput placeholder="Name" formControlName="name" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['name'].touched && addDeviceForm.controls['name'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Type" formControlName="type" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['type'].touched && addDeviceForm.controls['type'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Manufacturer" formControlName="manufacturer" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['manufacturer'].touched && addDeviceForm.controls['manufacturer'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="O.S." formControlName="os" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['os'].touched && addDeviceForm.controls['os'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="O.S. Version" formControlName="osVersion" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['osVersion'].touched && addDeviceForm.controls['osVersion'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Processor" formControlName="processor" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['processor'].touched && addDeviceForm.controls['processor'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput type="number" placeholder="Ram" formControlName="ramAmmount" autocomplete="off">
+                        <mat-error *ngIf="addDeviceForm.controls['ramAmmount'].touched && addDeviceForm.controls['ramAmmount'].hasError('required')">Field is required.</mat-error>
+                    </mat-form-field>
+                <button mat-flat-button color="primary" type="submit">Add Device</button>
+            </form>
+        </mat-card>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center" class="list-container">
+        <mat-card *ngFor="let device of devices" class="">
+            <app-card [device]="device" [isDevice]="isDevice"></app-card>
+        </mat-card>
+    </div>
+</div>

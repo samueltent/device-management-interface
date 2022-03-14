@@ -1,0 +1,17 @@
+
+<mat-card class="example-card">
+    <mat-card-title>My Devices</mat-card-title>
+    <mat-card-content>
+        <span *ngIf="!this.isDevice">
+            <p>You currently do not own any devices.</p>
+        </span>
+      <span fxLayout="row" fxLayoutAlign="space-between" *ngIf="this.isDevice">
+          <ul>
+              <li>Name: {{device.name}}</li>
+              <li>Type: {{device.type}}</li>
+              <li>Manufacturer: {{device.manufacturer}}</li>
+          </ul>
+          <button mat-button color="warn" (click)="onSubmit()">Cancel</button>
+      </span>
+    </mat-card-content>
+  </mat-card>
